@@ -1,6 +1,5 @@
 
-package com.awesomeProject; // (1)
-
+package com.awesomeproject; // (1)
 import com.wix.detox.Detox;
 import com.wix.detox.config.DetoxConfig;
 
@@ -16,7 +15,7 @@ import androidx.test.rule.ActivityTestRule;
 @LargeTest
 public class DetoxTest {
     @Rule // (2)
-    public ActivityTestRule<MainApplication> mActivityRule = new ActivityTestRule<>(MainApplication.class, false,
+    public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule<>(MainActivity.class, false,
             false);
 
     @Test
