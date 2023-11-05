@@ -1,3 +1,5 @@
+import {faker} from '@faker-js/faker';
+
 describe('Example', () => {
   beforeAll(async () => {
     await device.launchApp({newInstance: true});
@@ -19,5 +21,9 @@ describe('Example', () => {
   it('shows "Hi!" after tapping "Click me"', async () => {
     await element(by.id('click-me-button')).tap();
     await expect(element(by.text('Hi!'))).toBeVisible();
+  });
+
+  it('shows "Hi, <name>!" when the user enters their name', async () => {
+    const name = faker.person.firstName;
   });
 });
