@@ -1,12 +1,28 @@
 import {useState} from 'react';
 import React from 'react';
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 
 export default function App() {
+  const placeHolder = 'Enter your name, maybe?';
+  const [text, onChangeText] = React.useState(placeHolder);
   const [clicked, setClicked] = useState(false);
 
   return (
     <View style={styles.container}>
+      {/* <Text style={styles.notIntense}>Enter your name, maybe?</Text> */}
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+        testID="name-input"
+      />
       {!clicked && (
         <Pressable
           testID="click-me-button"
@@ -15,7 +31,11 @@ export default function App() {
           <Text style={styles.text}>Click me</Text>
         </Pressable>
       )}
-      {clicked && <Text style={styles.hi}>Hi!</Text>}
+      {clicked && (
+        <Text style={styles.hi} testID="output-text">
+          {text === placeHolder ? `Hi!` : `Hi, ${text}!`}
+        </Text>
+      )}
       <Text style={styles.intense}>WITNESS MEEEEE!</Text>
     </View>
   );
@@ -49,8 +69,18 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   intense: {
+    marginTop: 6,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FF0000',
+  },
+  notIntense: {
+    color: 'black',
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
